@@ -82,7 +82,7 @@ function bondJSON(data){
 
 	myData = "<pre>" + myData + "</pre>";
 	$("#output").html(myData);
-	*/
+	
 }
 
 function bondTemplate(film){
