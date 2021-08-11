@@ -1,21 +1,21 @@
 <html>
 <head>
-<title>Video Game Web Service</title>
+<title>Video Game Web Service Demo</title>
 <style>
 	body {font-family:georgia;}
-	
+
 	.film{
-	border:1px solid #E77DC2;
-	border-radius: 5px;
-	padding: 5px;
-	margin-bottom:5px;
-	position:relative;	
+		border:1px solid #E77DC2;
+		border-radius: 5px;
+		padding: 5px;
+		margin-bottom:5px;
+		position:relative;	
 	}
 
 	.pic{
-	position:absolute;
-	right:10px;
-	top:10px;
+		position:absolute;
+		right:10px;
+		top:10px;
 	}
 
 </style>
@@ -30,8 +30,23 @@ $(document).ready(function() {
 		loadAJAX(cat);  //load AJAX and parse JSON file
 	});
 });	
+/*
+function loadAJAX(cat)
+{
+	//AJAX connection will go here
+    //alert('cat is: ' + cat);
+
+	$.ajax({
+		type: "GET",
+		dataType: "json",
+		url: "api.php?cat=" + cat,
+		success: bondJSON
+
+	});
 
 
+}
+*/
 function loadAJAX(cat)
 {
    $.ajax({
@@ -54,7 +69,7 @@ function toConsole(data)
 }
 
 function bondJSON(data){
-	//here is how I see data returned via the console
+	//Here is how I see data returned via the console
 	console.log(data);
 
 	//identifies the type of data returned
@@ -70,65 +85,60 @@ function bondJSON(data){
 
 		$('<div></div>').html(myFilm).appendTo('#films');
 
-
 	});
 	*/
-
-	// this loads data on page but bunched up
 	//$("#output").text(JSON.stringify(data));
 
+	//this creates a map of the JSON on our page
 	
 	let myData = JSON.stringify(data,null,4);
-
-	myData = "<pre>" + myData + "</pre>";
+	myData = "<pre>" + myData + "</pre>"
 	$("#output").html(myData);
 	
 }
 
 function bondTemplate(film){
+
 	return `
-		<div class = "film">
-			<b>Film: </b>${film.Film}<br>
-			<b>Title: </b>${film.Title}<br>
-			<b>Year: </b>${film.Year}<br>
-			<b>Director: </b>${film.Director}<br>
-			<b>Producers: </b>${film.Producers}<br>
-			<b>Writers: </b>${film.Writers}<br>
-			<b>Composer: </b>${film.Composer}<br>
-			<b>Bond: </b>${film.Bond}<br>
-			<b>Budget: </b>${film.Budget}<br>
-			<b>Box Office: </b>${film.BoxOffice}<br>
-			<div class = "pic"><img src ="thumbnails/${film.Image}"></div>
+		<div class="film">
+			<b>Film: </b>${film.Film}</br>
+			<b>Title: </b>${film.Title}</br>
+			<b>Year: </b>${film.Year}</br>
+			<b>Director: </b>${film.Director}</br>
+			<b>Producers: </b>${film.Producers}</br>
+			<b>Writers: </b>${film.Writers}</br>
+			<b>Composer: </b>${film.Composer}</br>
+			<b>Bond: </b>${film.Bond}</br>
+			<b>Budget: </b>${film.Budget}</br>
+			<b>Box Office:</b>${film.BoxOffice}</br>
+			<div class="pic"><img src="thumbnails/${film.Image}" /></div>
 		</div>
-	
 	`;
 
 }
-
-
 
 </script>
 </head>
 	<body>
 	<h1>Video Game Web Service</h1>
 		<a href="year" class="category">Video Games By Year</a><br />
-		<a href="box" class="category">Video Games By Title</a>
+		<a href="title" class="category">Video Games By Title</a>
 		<h3 id="filmtitle">Title Will Go Here</h3>
 		<div id="films">
 			<!--
-			<div class = "film">
-				<b>Film: </b> 1<br>
-				<b>Title: </b> Dr. No<br>
-				<b>Year: </b> 1962<br>
-				<b>Director: </b> Terence Young<br>
-				<b>Producers: </b> Harry Saltzman and Albert R. Broccoli<br>
-				<b>Writers: </b> Richard Maibaum, Johanna Harwood and Berkely Mather1<br>
-				<b>Composer: </b> Monty Norman<br>
-				<b>Bond: </b> Sean Connery<br>
-				<b>Budget: </b> $1,000,000.00<br>
-				<b>Box Office: </b> $59,567,035.00<br>
-				<div class = "pic"><img src ="thumbnails/dr-no.jpg"></div>
-			</div>
+			<div class="film">
+			<b>Film: </b> 1</br>
+			<b>Title: </b> Dr. No</br>
+			<b>Year: </b> 1962</br>
+			<b>Director: </b> Terence Young</br>
+			<b>Producers: </b> Harry Saltzman and Albert R. Broccoli</br>
+			<b>Writers: </b> Richard Maibaum, Johanna Harwood and Berkely Mather</br>
+			<b>Composer: </b> Monty Norman</br>
+			<b>Bond: </b> Sean Connery</br>
+			<b>Budget: </b> $1,000,000.00</br>
+			<b>Box Office:</b> $59,567,035.00</br>
+			<div class="pic"><img src="thumbnails/dr-no.jpg" /></div>
+		</div>
 			-->
 		</div>
 		<div id="output">Results go here</div>
